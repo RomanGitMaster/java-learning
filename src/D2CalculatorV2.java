@@ -8,16 +8,29 @@ public class D2CalculatorV2 {
 
         while (running) {
             System.out.println("Enter first number:");
+            if (!input.hasNextDouble()) {
+                System.out.println("Invalid number");
+                input.next();
+                continue;
+            }
             double num1 = input.nextDouble();
+
             System.out.println("Enter second number:");
+            if (!input.hasNextDouble()) {
+                System.out.println("Invalid number");
+                input.next();
+                continue;
+            }
             double num2 = input.nextDouble();
+
             System.out.println("Enter operation:");
             char op = input.next().charAt(0);
 
             if (op == '/' && num2 == 0) {
                 System.out.println("Error:division by zero is not allowed.");
-                break;
+                continue;
             }
+
             switch (op) {
                 case '+':
                     System.out.println("Result:" + (num1 + num2));
@@ -38,6 +51,7 @@ public class D2CalculatorV2 {
 
             System.out.println("Do you want to continue?(y/n)");
             char runningChar = input.next().charAt(0);
+
             switch (runningChar) {
                 case 'y':
                     running = true;
