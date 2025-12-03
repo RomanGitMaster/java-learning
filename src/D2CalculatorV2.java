@@ -15,42 +15,47 @@ public class D2CalculatorV2 {
             }
             double num1 = input.nextDouble();
 
-            System.out.println("Enter second number:");
-            if (!input.hasNextDouble()) {
-                System.out.println("Invalid number");
-                input.next();
-                continue;
+            double num2;
+            while (true) {
+                System.out.println("Enter second number:");
+                if (input.hasNextDouble()) {
+                    num2 = input.nextDouble();
+                    break;
+                } else {
+                    System.out.println("Invalid input. Please try again.");
+                    input.next();
+                }
             }
-            double num2 = input.nextDouble();
 
-            System.out.println("Enter operation:");
+            System.out.println("Enter operation(+,-,*,/):");
             char op = input.next().charAt(0);
 
             if (op == '/' && num2 == 0) {
-                System.out.println("Error:division by zero is not allowed.");
+                System.out.println("Error: division by zero is not allowed.");
                 continue;
             }
 
             switch (op) {
                 case '+':
-                    System.out.println("Result:" + (num1 + num2));
+                    System.out.println("Result: " + (num1 + num2));
                     break;
                 case '-':
-                    System.out.println("Result:" + (num1 - num2));
+                    System.out.println("Result: " + (num1 - num2));
                     break;
                 case '*':
-                    System.out.println("Result:" + (num1 * num2));
+                    System.out.println("Result: " + (num1 * num2));
                     break;
                 case '/':
-                    System.out.println("Result:" + (num1 / num2));
+                    System.out.println("Result: " + (num1 / num2));
                     break;
                 default:
                     System.out.println("Make sure to enter valid operation");
                     break;
             }
 
+
             System.out.println("Do you want to continue?(y/n)");
-            char runningChar = input.next().charAt(0);
+            char runningChar = input.next().toLowerCase().charAt(0);
 
             switch (runningChar) {
                 case 'y':
@@ -65,6 +70,8 @@ public class D2CalculatorV2 {
                     running = false;
                     break;
             }
+
+
         }
         input.close();
     }
